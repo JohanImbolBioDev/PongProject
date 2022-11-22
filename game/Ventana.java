@@ -1,15 +1,15 @@
-package com.game;
+package game;
 
 import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
-    private final int Ancho = 800, Alto = 400;
+            private final int Ancho = 800, Alto = 400;
 
-   
+
     private Hilo hilo;
     
     public Ventana(PanelJuego panel){
-       
+        
         setSize(Ancho,Alto);
         setLocationRelativeTo(null);
         setResizable(false);

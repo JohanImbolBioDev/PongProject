@@ -1,4 +1,4 @@
-package com.game;
+package game;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,14 +14,14 @@ public class PanelJuego extends JPanel{
     private int alturaRaqueta = 80, anchoRaqueta = 20;
     private Color ColorFondo = new Color(0,0,0);
     private Color ColorBall = new Color(250,250,250);
-    public int SpeedGame = 0;
-    public Rectangle TamañoPanel = getBounds();
+    public int SpeedGame = 5;
+    public Rectangle TamanoPanel = getBounds();
     private int puntajeJ1 = 0, puntajeJ2 = 0;
 
 
     
-    Raqueta r1 = new Raqueta(2,200-alturaRaqueta, anchoRaqueta, alturaRaqueta,KeyEvent.VK_W,KeyEvent.VK_S);
-    Raqueta r2 = new Raqueta(782-anchoRaqueta, 200-alturaRaqueta, anchoRaqueta, alturaRaqueta,KeyEvent.VK_UP, KeyEvent.VK_DOWN);
+    Raqueta r1 = new Raqueta(0,200-alturaRaqueta, anchoRaqueta, alturaRaqueta,KeyEvent.VK_W,KeyEvent.VK_S);
+    Raqueta r2 = new Raqueta(796-anchoRaqueta, 200-alturaRaqueta, anchoRaqueta, alturaRaqueta,KeyEvent.VK_UP, KeyEvent.VK_DOWN);
     Ball pelota = new Ball(0,0,AnchoPelota,AlturaPelota);
 
     public PanelJuego(){
@@ -37,6 +37,7 @@ public class PanelJuego extends JPanel{
         refresh();
         Puntuacion();
         VelocidadGame();
+        
     }
 
     public void draw(Graphics2D g){
@@ -60,10 +61,17 @@ public class PanelJuego extends JPanel{
     public void Puntuacion(){
         if(pelota.PointLeft(getBounds())){
             puntajeJ2++;
+            SpeedGame = 10;
+            MostrarPuntaje();
         }
         if(pelota.PointRight(getBounds())){
             puntajeJ1++;
+            SpeedGame = 10;
+            MostrarPuntaje();
         }
+    }
+
+    public void MostrarPuntaje() {
         System.out.println("J1: "+ puntajeJ1+ " ||J2: "+puntajeJ2);
     }
 
